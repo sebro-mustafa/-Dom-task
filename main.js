@@ -136,8 +136,29 @@ row.classList.add('row')
 document.body.appendChild(container)
 row.innerHTML=`
 <div class="col-12"><h1 id="header" class="mb-5 d-flex justify-content-center ">Notes</h1></div>
-<div class="col-12 d-flex fs-5 justify-content-center "><input type="text" id="note" name="note" class="py-2 px-1 me-2 w-75" placeholder="Type your note">
+<div class="col-12 d-flex fs-5 justify-content-center mb-5 "><input type="text" id="note" name="note" class="py-2 px-1 me-2 w-75" placeholder="Type your note">
 <button id="btn-add" class="p-3 ">+ create</button></div>
+<div><ul id="list" class="list-unstyled border border-secondary "></ul></div>
 `
-// document.body.style.backgroundColor='blue';
 document.body.classList.add('bg-warning-subtle')
+document.getElementById('btn-add').addEventListener('click',()=>{
+    let note=document.getElementById("note").value
+    if(note){
+        let note_x=document.createElement('li')
+        note_x.classList.add('border','border-bottom','border-dark','p-3','d-flex','justify-content-center','fs-4')
+        note_x.innerText=note
+        list.appendChild(note_x)
+       let btn_remove=document.createElement('button')
+       note_x.appendChild(btn_remove)
+       btn_remove.innerText=`remove`
+       btn_remove.classList.add('btn_remove','btn','btn-danger','ms-4','p-2')
+       document.getElementById("note").value=""
+    }
+    else{
+        alert("please inter what you want")
+    }
+})
+document.getElementsByClassName('btn_remove').addEventListener('click',()=>{
+    
+
+})
